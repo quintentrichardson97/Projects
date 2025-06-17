@@ -1,0 +1,44 @@
+{% extends "home/layout.html" %}
+
+{% block content %}
+  <div class="flex flex-row flex-wrap gap-4 p-8">
+
+    {% for skin in skins %}
+      <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl relative min-h-[400px]">
+        <img src="{{ skin.skin.url }}"
+             alt="{{ skin.title }}"
+             class="h-80 w-full object-cover rounded-t-xl" />
+
+        <div class="px-4 py-3 pb-12"> <!-- give space at the bottom -->
+          <p class="text-opacity-25 font-bold text-gray-400 text-left">{{ skin.artist }}</p>
+          <p class="text-lg font-bold text-black capitalize text-center truncate">
+            {{ skin.title }}
+          </p>
+
+          <p class="text-md font-semibold text-black mb-1">
+            {{ skin.description }}
+          </p>
+        </div>
+
+        <!-- icon fixed to bottom right -->
+        <div class="absolute bottom-3 right-3">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               width="25"
+               height="25"
+               fill="none"
+               viewBox="0 0 22 20"
+               class="text-black">
+            <path stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2m-8 1V4m0 12-4-4m4 4 4-4"/>
+          </svg>
+        </div>
+      </div>
+    {% empty %}
+      <h1 class="text-white text-xl">There have been no skins added</h1>
+    {% endfor %}
+
+  </div>
+{% endblock %}
